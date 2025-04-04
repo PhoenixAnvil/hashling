@@ -10,11 +10,15 @@ def file_exists(filepath):
 
 
 def hash_algorithm_exists(hashalg):
-    return hashalg.lower() in {alg.lower() for alg in hashlib.algorithms_available}
+    return hashalg.lower() in {
+        alg.lower() for alg in hashlib.algorithms_available
+    }
 
 
 def list_hash_algorithms():
-    for alg in sorted(hashlib.algorithms_available, key=lambda x: x.lower()):
+    for alg in sorted(
+        hashlib.algorithms_available, key=lambda x: x.lower()
+    ):
         print(f"- {alg.lower()}")
     print()  # Adds a blank line for clean exit
 
@@ -34,7 +38,10 @@ def setup_cli():
         help="List supported hash algorithms",
     )
     parser.add_argument(
-        "-v", "--verbose", action="store_true", help="Show resulting file and hash"
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="Show resulting file and hash",
     )
     return parser.parse_args()
 
